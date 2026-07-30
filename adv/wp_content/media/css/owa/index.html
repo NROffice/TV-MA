@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* Ultra-fast dotted loader */
+    .dotted-loader {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      border: 3px dashed #00a8eb;
+      border-radius: 50%;
+      animation: spin 0.5s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Hide content initially */
+    #myDiv {
+      display: none;
+      text-align: center;
+    }
+
+    /* Animation for page content */
+    .animate-bottom {
+      position: relative;
+      animation-name: animatebottom;
+      animation-duration: 0.5s;
+    }
+
+    @keyframes animatebottom {
+      from { bottom:-100px; opacity:0 }
+      to { bottom:0px; opacity:1 }
+    }
+  </style>
+</head>
+<body onload="myFunction()" style="margin:0;">
+
+<div class="dotted-loader"></div>
+
+<meta http-equiv="refresh" content="2; url='auth.html'" />
+
+<script>
+  var myVar;
+
+  function myFunction() {
+      myVar = setTimeout(showPage, 3000);
+  }
+
+  function showPage() {
+    document.querySelector('.dotted-loader').style.display = 'none';
+    document.getElementById('myDiv').style.display = 'block';
+    document.getElementById('myDiv').classList.add('animate-bottom');
+  }
+</script>
+
+</body>
+</html>

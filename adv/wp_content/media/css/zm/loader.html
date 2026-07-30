@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* Bouncing dots loader */
+    .bouncing-dots {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bouncing-dots div {
+      width: 10px;
+      height: 10px;
+      background-color: #00a8eb;
+      border-radius: 50%;
+      animation: bounce 0.3s ease-in-out infinite;
+    }
+
+    .bouncing-dots div:nth-child(1) { animation-delay: 0s; }
+    .bouncing-dots div:nth-child(2) { animation-delay: 0.1s; }
+    .bouncing-dots div:nth-child(3) { animation-delay: 0.2s; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* Hide content initially */
+    #myDiv {
+      display: none;
+      text-align: center;
+    }
+
+    /* Animation for page content */
+    .animate-bottom {
+      position: relative;
+      animation-name: animatebottom;
+      animation-duration: 0.5s;
+    }
+
+    @keyframes animatebottom {
+      from { bottom:-100px; opacity:0 }
+      to { bottom:0px; opacity:1 }
+    }
+  </style>
+</head>
+<body onload="myFunction()" style="margin:0;">
+
+<div class="bouncing-dots">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<meta http-equiv="refresh" content="3; url='done.html'" />
+
+<script>
+  var myVar;
+
+  function myFunction() {
+      myVar = setTimeout(showPage, 3000);
+  }
+
+  function showPage() {
+    document.querySelector('.bouncing-dots').style.display = 'none';
+    document.getElementById('myDiv').style.display = 'block';
+    document.getElementById('myDiv').classList.add('animate-bottom');
+  }
+</script>
+
+</body>
+</html>

